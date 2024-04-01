@@ -105,28 +105,4 @@ void displayRegistrations() {
     }
 }
 
-// Function to search for a user by ID and display their details
-void searchRegistrationById() {
-    int id;
-    printf("Enter ID to search: ");
-    scanf("%d", &id);
-
-    for (int i = 0; i < numRegistrations; i++) {
-        if (registrations[i].id == id) {
-            printf("\nID\tName\tAge\n");
-            printf("%d\t%s\t%d\n", registrations[i].id, registrations[i].name, registrations[i].age);
-            return;
-        }
-    }
-    printf("Registration with ID %d not found.\n", id);
-}
-
-// Dummy implementations for update and delete functions to avoid compilation errors
-void updateRegistration() {
-    printf("Function not implemented.\n");
-}
-
-void deleteRegistration() {
-    printf("Function not implemented.\n");
-}
 
