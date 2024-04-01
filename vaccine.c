@@ -1,82 +1,132 @@
+#include <stdio.h>
+#include <string.h>
 
-// VACCINE  REGISTRATION VACCINATION 
-#include<stdio.h>
-#include<string.h>
-void display_user();
-void register_user();
+// Global variables
+int MAX_REGISTRATIONS = 100;
+int NAME_LENGTH = 50;
 
-int maxRegistrations = 100;
-int nameLength = 50;
-int registrationIds[100];
-char names[100][50];
-int ages[100];
+// Structure to represent a registration
+struct Registration {
+    int id;
+    char name[50];
+    int age;
+};
+
+// Global array of registrations
+struct Registration registrations[100];
 int numRegistrations = 0;
 
+// Function prototypes
+void registerPerson();
+void displayRegistrations();
+void searchRegistrationById();
+void displayUserById(int id);
+void updateRegistration();
+void deleteRegistration();
 
-//function to register the user
-
-void register_user()
-{
-	if(numRegistrations == maxRegistrations)
-	{
-		printf("registration limit reached.\n");
-	}
-	 int id;
-	 int i;
-	 printf("enter id:");
-	 scanf("%d",&id);
-	 
-	 for (i = 0; i < numRegistrations; i++) {
-        if (registrationIds[i] == id) {
-            printf("ID already exists. Please enter a different ID.\n");
-            return;
-        }
-    }
-
-    registrationIds[numRegistrations] = id;
-    printf("Enter Name: ");
-    scanf("%s", names[numRegistrations]);
-    printf("Enter Age: ");
-    scanf("%d", &ages[numRegistrations]);
-
-    numRegistrations++;
-    printf("Registration successful.\n");
-}
-
-
-//function to display user
-void display_users()
-{
-	
-}
-
-
-
-int main() 
- {
+int main() {
     int choice;
+
     do {
-        printf("\nVaccine Registration Management\n");
-        printf("1. Register User\n");
-        printf("2. Display Registered Users\n");
-        printf("3. Exit\n");
+        printf("\nVaccine Registration Application\n");
+        printf("1. Register Person\n");
+        printf("2. Display Registrations\n");
+        printf("3. Search Registration by ID\n");
+        printf("4. Update Registration\n");
+        printf("5. Delete Registration\n");
+        printf("6. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                register_user();
+                registerPerson();
                 break;
             case 2:
-                display_users();
+                displayRegistrations();
                 break;
             case 3:
-                printf("Exiting...\n");
+                searchRegistrationById();
+                break;
+            case 4:
+                updateRegistration();
+                break;
+            case 5:
+                deleteRegistration();
+                break;
+            case 6:
+                printf("Exiting program.\n");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");
         }
-    } while (choice != 3);
+    } while (choice != 6);
 
-
+    return 0;
 }
+
+// Function to register a person
+void registerPerson() {
+    if (numRegistrations == MAX_REGISTRATIONS) {
+        printf("Registration limit reached.\n");
+        return;
+    }
+
+    struct Registration newRegistration;
+    printf("Enter ID: ");
+    scanf("%d", &newRegistration.id);
+
+    for (int i = 0; i < numRegistrations; i++) {
+        if (registrations[i].id == newRegistration.id) {
+            printf("ID already exists. Please enter a different ID.\n");
+            return;
+        }
+    }
+
+    printf("Enter Name: ");
+    scanf("%s", newRegistration.name);
+    printf("Enter Age: ");
+    scanf("%d", &newRegistration.age);
+
+    registrations[numRegistrations++] = newRegistration;
+    printf("Registration successful.\n");
+}
+
+// Function to display all registrations
+void displayRegistrations() {
+    if (numRegistrations == 0) {
+        printf("No registrations to display.\n");
+        return;
+    }
+
+    printf("\nID\tName\tAge\n");
+    for (int i = 0; i < numRegistrations; i++) {
+        printf("%d\t%s\t%d\n", registrations[i].id, registrations[i].name, registrations[i].age);
+    }
+}
+
+// Function to search for a user by ID and display their details
+void searchRegistrationById() {
+    int id;
+    printf("Enter ID to search: ");
+    scanf("%d", &id);
+
+    for (int i = 0; i < numRegistrations; i++) {
+        if (registrations[i].id == id) {
+            printf("\nID\tName\tAge\n");
+            printf("%d\t%s\t%d\n", registrations[i].id, registrations[i].name, registrations[i].age);
+            return;
+        }
+    }
+    printf("Registration with ID %d not found.\n", id);
+}
+
+// Dummy implementations for update and delete functions to avoid compilation errors
+void updateRegistration() {
+    printf("Function not implemented.\n");
+}
+
+void deleteRegistration() {
+    printf("Function not implemented.\n");
+}
+
