@@ -1,28 +1,21 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include "vaccine.h"
+#include "register.c"
+//#include "display.c"
 
-// Global variables
-int MAX_REGISTRATIONS = 100;
-int NAME_LENGTH = 50;
 
-// Structure to represent a registration
-struct Registration {
-    int id;
-    char name[50];
-    int age;
-};
 
 // Global array of registrations
 struct Registration registrations[100];
-int numRegistrations = 0;
+//int numRegistrations = 0;
 
 // Function prototypes
 void registerPerson();
-void displayRegistrations();
-void searchRegistrationById();
+//void displayRegistrations();
+/*void searchRegistrationById();
 void displayUserById(int id);
 void updateRegistration();
-void deleteRegistration();
+void deleteRegistration();*/
 
 int main() {
     int choice;
@@ -42,7 +35,7 @@ int main() {
             case 1:
                 registerPerson();
                 break;
-            case 2:
+            /*case 2:
                 displayRegistrations();
                 break;
             case 3:
@@ -56,17 +49,17 @@ int main() {
                 break;
             case 6:
                 printf("Exiting program.\n");
-                break;
+                break;*/
             default:
                 printf("Invalid choice. Please try again.\n");
         }
-    } while (choice != 6);
+    } while (choice != 1);
 
     return 0;
 }
 
 // Function to register a person
-void registerPerson() {
+/*void registerPerson() {
     if (numRegistrations == MAX_REGISTRATIONS) {
         printf("Registration limit reached.\n");
         return;
@@ -105,4 +98,4 @@ void displayRegistrations() {
     }
 }
 
-
+*/
