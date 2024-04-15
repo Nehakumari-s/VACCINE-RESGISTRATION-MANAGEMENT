@@ -1,19 +1,12 @@
-#include"vaccine.h"
+#include <stdio.h>
+#include <string.h>
+#include "vaccine.h"
 
 int MAX_REGISTRATIONS = 100;
 int NAME_LENGTH = 50;
 
-// Structure to represent a registration
-struct Registration {
-    int id;
-    char name[50];
-    int age;
-};
 
-// Global array of registrations
-struct Registration registrations[100];
 int numRegistrations = 0;
-
 
 // Function to register a person
 void registerPerson() {

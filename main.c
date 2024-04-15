@@ -1,21 +1,7 @@
 #include<stdio.h>
 #include "vaccine.h"
 #include "register.c"
-//#include "display.c"
-
-
-
-// Global array of registrations
-struct Registration registrations[100];
-//int numRegistrations = 0;
-
-// Function prototypes
-void registerPerson();
-//void displayRegistrations();
-/*void searchRegistrationById();
-void displayUserById(int id);
-void updateRegistration();
-void deleteRegistration();*/
+#include "display.c"
 
 int main() {
     int choice;
@@ -35,10 +21,10 @@ int main() {
             case 1:
                 registerPerson();
                 break;
-            /*case 2:
+            case 2:
                 displayRegistrations();
                 break;
-            case 3:
+            /*case 3:
                 searchRegistrationById();
                 break;
             case 4:
@@ -52,50 +38,10 @@ int main() {
                 break;*/
             default:
                 printf("Invalid choice. Please try again.\n");
-        }
-    } while (choice != 1);
+            }
+    } while (choice != 2);
 
     return 0;
 }
 
-// Function to register a person
-/*void registerPerson() {
-    if (numRegistrations == MAX_REGISTRATIONS) {
-        printf("Registration limit reached.\n");
-        return;
-    }
-
-    struct Registration newRegistration;
-    printf("Enter ID: ");
-    scanf("%d", &newRegistration.id);
-
-    for (int i = 0; i < numRegistrations; i++) {
-        if (registrations[i].id == newRegistration.id) {
-            printf("ID already exists. Please enter a different ID.\n");
-            return;
-        }
-    }
-
-    printf("Enter Name: ");
-    scanf("%s", newRegistration.name);
-    printf("Enter Age: ");
-    scanf("%d", &newRegistration.age);
-
-    registrations[numRegistrations++] = newRegistration;
-    printf("Registration successful.\n");
-}
-
-// Function to display all registrations
-void displayRegistrations() {
-    if (numRegistrations == 0) {
-        printf("No registrations to display.\n");
-        return;
-    }
-
-    printf("\nID\tName\tAge\n");
-    for (int i = 0; i < numRegistrations; i++) {
-        printf("%d\t%s\t%d\n", registrations[i].id, registrations[i].name, registrations[i].age);
-    }
-}
-
-*/
+ 
