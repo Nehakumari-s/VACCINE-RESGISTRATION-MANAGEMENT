@@ -23,6 +23,8 @@ int main() {
                 break;
             case 2:
                 displayRegistrations();
+                readRegistrationsFromFile("registrations.txt");
+                writeRegistrationsToFile("registrations_backup.txt");
                 break;
             /*case 3:
                 searchRegistrationById();
@@ -44,4 +46,4 @@ int main() {
     return 0;
 }
 
- 
+
