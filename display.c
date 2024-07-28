@@ -6,14 +6,23 @@ extern Registration records[MAX_RECORDS];
 extern int count;
 
 void displayRegistrations() {
-    for (int i = 0; i < count; i++) {
-        printf("\nRecord %d\n", i + 1);
-        printf("ID: %d\n", records[i].id);
-        printf("Name: %s\n", records[i].name);
-        printf("Age: %d\n", records[i].age);
-        printf("Contact: %s\n", records[i].contact);
-        printf("Appointment Date: %s\n", records[i].appointmentDate);
+    FILE *file = fopen("registrations.txt", "w");
+    if (file == NULL) {
+        perror("Error opening file");
+        return;
     }
+
+    for (int i = 0; i < count; i++) {
+        fprintf(file, "\nRecord %d\n", i + 1);
+        fprintf(file, "ID: %d\n", records[i].id);
+        fprintf(file, "Name: %s\n", records[i].name);
+        fprintf(file, "Age: %d\n", records[i].age);
+        fprintf(file, "Contact: %s\n", records[i].contact);
+        fprintf(file, "Appointment Date: %s\n", records[i].appointmentDate);
+    }
+
+    fclose(file);
+    printf("Registrations have been saved to 'registrations.txt'.\n");
 }
 
 void searchRegistrationById() {
@@ -97,6 +106,7 @@ void deleteRegistration() {
     }
 
     if (!found) {
-        printf("Record with ID %d not found.\n", id);
-    }
+        printf("Record with ID %d not found.\n", id);
+    }
 }
+
