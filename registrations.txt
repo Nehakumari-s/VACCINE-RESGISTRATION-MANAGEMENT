@@ -1,7 +1,14 @@
 
 Record 1
 ID: 1
-Name: NEHA
+Name: kamala
 Age: 23
-Contact: 1234567898
+Contact: 2345678998
+Appointment Date: Not scheduled
+
+Record 2
+ID: 2
+Name: neha
+Age: 22
+Contact: 7275015752
 Appointment Date: Not scheduled

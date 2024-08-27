@@ -13,6 +13,15 @@ void displayRegistrations() {
     }
 
     for (int i = 0; i < count; i++) {
+        // Print to console
+        printf("\nRecord %d\n", i + 1);
+        printf("ID: %d\n", records[i].id);
+        printf("Name: %s\n", records[i].name);
+        printf("Age: %d\n", records[i].age);
+        printf("Contact: %s\n", records[i].contact);
+        printf("Appointment Date: %s\n", records[i].appointmentDate);
+
+        // Print to file
         fprintf(file, "\nRecord %d\n", i + 1);
         fprintf(file, "ID: %d\n", records[i].id);
         fprintf(file, "Name: %s\n", records[i].name);
@@ -22,7 +31,7 @@ void displayRegistrations() {
     }
 
     fclose(file);
-    printf("Registrations have been saved to 'registrations.txt'.\n");
+    printf("Registrations have been displayed and saved to 'registrations.txt'.\n");
 }
 
 void searchRegistrationById() {
